@@ -1,49 +1,85 @@
-/* Navbar styles */
-nav {
-    background: #333;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: center;
+/* Floating Transparent Navbar */
+.floating-nav {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Hide Floating Navbar on Scroll */
+.floating-nav.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Sticky Full-Width Navbar */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px 100;
+  box-shadow: 0px 4px 10px rgba(32, 32, 32, 0.5);
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+}
+
+/* Show Sticky Navbar after Scroll */
+.sticky-nav.visible {
+  transform: translateY(0);
+}
+
+/* Navbar List */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 15px;
+  border-radius: 10px;
+  transition: 0.8s;
+}
+
+nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
-  
-  ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    padding: 0;
+
+  .floating-nav {
+    width: 95%;
+    padding: 10px;
   }
-  
-  li {
-    display: inline;
-  }
-  
-  a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 8px 12px;
-    transition: 0.3s;
-  }
-  
-  a:hover {
-    background: #555;
-    border-radius: 5px;
-  }
-  
-  /* Responsive Navbar */
-  @media screen and (max-width: 768px) {
-    nav {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    ul {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    li {
-      margin-bottom: 10px;
-    }
-  }
-  
+}

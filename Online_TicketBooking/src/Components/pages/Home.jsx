@@ -1,137 +1,99 @@
 import React, { useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "../Home.css";
-
-
-const offers = [
-  {
-    img: "https://your-image-link.com/offer1.jpg",
-    title: "Tickets!",
-    validity: "Valid till: 15th Feb'25",
-  },
-  {
-    img: "https://your-image-link.com/offer2.jpg",
-    title: "₹1!",
-    validity: "Valid till: *Limited Period Offers",
-  },
-  {
-    img: "https://your-image-link.com/offer3.jpg",
-    title: "Special Train",
-    validity: "Valid till: Limited Period",
-  },
-];
 
 const Home = () => {
   const [source, setSource] = useState("");
   const [destination, setDestination] = useState("");
   const [date, setDate] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? offers.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === offers.length - 1 ? 0 : prev + 1));
-  };
 
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col items-center">
-      {/* Header Section */}
-      <div className="w-full bg-orange-500 py-4 text-center text-white text-2xl font-bold">
-        Train Ticket Booking
-      </div>
-
-      {/* Booking Form */}
-      <div className="bg-white p-6 rounded-lg shadow-lg mt-8 w-3/4 max-w-3xl">
-        <div className="flex flex-col md:flex-row gap-4">
-          <div className="input-group">
-            <label className="block font-semibold text-gray-700">From</label>
-            <input
-              type="text"
-              placeholder="Enter Source Name"
-              value={source}
-              onChange={(e) => setSource(e.target.value)}
-              className="input-field"
-            />
-          </div>
-
-          <div className="input-group">
-            <label className="block font-semibold text-gray-700">To</label>
-            <input
-              type="text"
-              placeholder="Enter Destination Name"
-              value={destination}
-              onChange={(e) => setDestination(e.target.value)}
-              className="input-field"
-            />
-          </div>
-
-          <div className="input-group">
-            <label className="block font-semibold text-gray-700">Departure</label>
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              className="input-field"
-            />
-          </div>
-        </div>
-
-        <button className="search-button">SEARCH TRAINS</button>
-      </div>
-
-      {/* Offers Section */}
-      <div className="bg-white p-6 rounded-lg shadow-lg mt-8 w-3/4 max-w-4xl relative">
-        <h2 className="text-blue-600 text-xl font-semibold text-center border-b pb-2">
-          Offers
-        </h2>
-        <p className="text-gray-500 text-center mb-4">Trains offers for you</p>
-
-        <div className="flex items-center overflow-hidden relative">
-          <button onClick={prevSlide} className="carousel-btn left-0">
-            <FaChevronLeft size={20} />
-          </button>
-
-          <div className="flex gap-4 transition-transform duration-300">
-            {offers.map((offer, index) => (
-              <div
-                key={index}
-                className={`carousel-item ${
-                  index === currentIndex ? "opacity-100" : "opacity-50"
-                }`}
-              >
-                <img src={offer.img} alt={offer.title} className="offer-image" />
-                <h3 className="font-semibold mt-2">{offer.title}</h3>
-                <p className="text-gray-600 text-sm">{offer.validity}</p>
-              </div>
-            ))}
-          </div>
-
-          <button onClick={nextSlide} className="carousel-btn right-0">
-            <FaChevronRight size={20} />
-          </button>
+    <div className="home-container">
+      {/* Hero Section */}
+      <div className="hero-section">
+        <div className="overlay">
+          <h1 className="title">One Ticket Away from Your Next Adventure!</h1>
+          <p className="subtitle">Find the best travel deals, tickets, and vacation packages</p>
+          <button className="explore-button">Start Your Journey</button>
         </div>
       </div>
 
-      {/* Features Section */}
-      <div className="features-section">
-        <h2 className="features-title">Why Book With Us?</h2>
-        <div className="features-grid">
-          <div className="feature-card">
-            <h3>No Cancellation Fee</h3>
-            <p>Get full refunds on cancellations.</p>
-          </div>
-          <div className="feature-card">
-            <h3>Confirmed Tickets</h3>
-            <p>Guaranteed seat confirmation.</p>
-          </div>
-          <div className="feature-card">
-            <h3>No Payment Fee</h3>
-            <p>Zero extra charges via UPI.</p>
-          </div>
+      {/* Travel Assistance Section */}
+      <div className="section travel-assistance">
+        <h2>24/7 Travel Assistance</h2>
+        <p>We are here to help you with any travel queries and concerns.</p>
+        <img src="/assets/travel-assistance.jpg" alt="Travel Assistance" />
+      </div>
+
+      {/* Ticket Booking Section */}
+      <div className="section ticket-booking">
+        <h2>Book Your Tickets</h2>
+        <div className="booking-form">
+          <input type="text" placeholder="Enter Source Name" value={source} onChange={(e) => setSource(e.target.value)} />
+          <input type="text" placeholder="Enter Destination Name" value={destination} onChange={(e) => setDestination(e.target.value)} />
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+          <button className="book-button">Search Tickets</button>
+        </div>
+        <img src="/assets/booking.jpg" alt="Ticket Booking" />
+      </div>
+
+      {/* Movies Section */}
+      <div className="section movies-section">
+        <h2>Latest Movies</h2>
+        <div className="movies-grid">
+          <div className="movie-card"><img src="/assets/movie1.jpg" alt="Movie 1" /><p>Movie 1</p></div>
+          <div className="movie-card"><img src="/assets/movie2.jpg" alt="Movie 2" /><p>Movie 2</p></div>
+          <div className="movie-card"><img src="/assets/movie3.jpg" alt="Movie 3" /><p>Movie 3</p></div>
         </div>
       </div>
+
+      {/* Concerts and Events */}
+      <div className="section concerts-section">
+        <h2>Upcoming Concerts & Events</h2>
+        <div className="concerts-grid">
+          <div className="concert-card"><img src="/assets/concert1.jpg" alt="Concert 1" /><p>Concert 1</p></div>
+          <div className="concert-card"><img src="/assets/concert2.jpg" alt="Concert 2" /><p>Concert 2</p></div>
+          <div className="concert-card"><img src="/assets/concert3.jpg" alt="Concert 3" /><p>Concert 3</p></div>
+        </div>
+      </div>
+
+      {/* Holiday Packages */}
+      <div className="section holiday-packages">
+        <h2>Exclusive Holiday Packages</h2>
+        <p>Plan your perfect getaway with our customized vacation deals.</p>
+        <img src="/assets/holiday.jpg" alt="Holiday Trips" />
+      </div>
+
+      {/* Discount Offers */}
+      <div className="section discount-offers">
+        <h2>Special Discounts & Offers</h2>
+        <p>Save more with our exclusive discounts on travel and entertainment.</p>
+        <img src="/assets/discount.jpg" alt="Discount Offers" />
+      </div>
+
+      {/* Credit Card Discounts */}
+      <div className="section credit-card-discounts">
+        <h2>Credit Card Discounts</h2>
+        <p>Enjoy additional savings when booking with partner credit cards.</p>
+        <img src="/assets/credit-card.jpg" alt="Credit Card Discounts" />
+      </div>
+
+      {/* Additional Services */}
+      <div className="section additional-services">
+        <h2>More Travel Services</h2>
+        <p>Compare and book hotels, vacations, and rental cars with ease.</p>
+        <img src="/assets/services.jpg" alt="Travel Services" />
+      </div>
+
+      {/* Testimonials Section */}
+      <div className="section testimonials-section">
+        <h2>What Our Customers Say</h2>
+        <p>"Best travel experience! Highly recommended."</p>
+        <p>"Easy booking process and great customer support."</p>
+        <img src="/assets/testimonials.jpg" alt="Happy Customers" />
+      </div>
+
+      {/* Footer */}
+      
     </div>
   );
 };
