@@ -1,0 +1,49 @@
+/* Navbar styles */
+nav {
+    background: #333;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+  }
+  
+  li {
+    display: inline;
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    transition: 0.3s;
+  }
+  
+  a:hover {
+    background: #555;
+    border-radius: 5px;
+  }
+  
+  /* Responsive Navbar */
+  @media screen and (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    ul {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    li {
+      margin-bottom: 10px;
+    }
+  }
+  
